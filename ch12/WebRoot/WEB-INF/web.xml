@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name>我的第一个struts项目</display-name>	
+  <!--我的struts开发环境搭建好了，步骤是先拷贝struts.xml文件，在配置web.xml文件，一个是配置struts的Action,一个是配置struts.xml的核心控制器，再加入jar包 -->
+   <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+  <!-- -这就是一个核心控制器，不用写，struts2框架已经帮你写好了 -->
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+  
+  <!--struts2中Action类的配置能够让Struts的核心 控制器知道Action的存在，并可以通过调用该action来处理用户请求 -->
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
+<!-- 通过客户端提交的参数，将请求转发给Struts.xml中 -->

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>     <!-- struts是根路径 -->
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+<!-- - 
+    <package name="default" namespace="/" extends="struts-default">
+
+        <default-action-ref name="index" />
+
+        <global-results>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+        <action name="index">
+            <result type="redirectAction">
+                <param name="actionName">HelloWorld</param>
+                <param name="namespace">/example</param>
+            </result>
+        </action>
+    </package>
+
+ -->     
+<!-- 请求首先会在指定名称空间找对应的Action，如果找不到再到默认的名称空间找Action，拦截器配置 -->
+    <!-- Add packages here，对于struts.xml来说，package就像是一个类，有继承、抽象、名称等属性，struts-default是struts框架的默认包 -->
+    <package name="login" extends="struts-default">
+    <action name="login1" class="LoginAction1.LoginAction1">
+    <!-- 在例中由于继承了ActionSupport，所以返回的是SUCCESS和INPUT,但是在这里应使用success和input,即常量值 -->
+    <result name="success">/success1.jsp</result>     <!-- --这个是转发，所以地址栏不变 -->
+    <result name="input">/login1.jsp</result>         <!-- --这个是转发，所以地址栏不变 -->
+    </action>                 <!-- 这个错误并不影响程序的正常运行，可以正常编译通过 -->
+    </package>
+    <package name="ognl" extends="struts-default">
+        <action name="ognl" class="ognl.OGNLAction">
+        <result name="success">/registerSuccess.jsp</result>
+        </action>
+    </package>
+
+</struts>

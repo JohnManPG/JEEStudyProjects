@@ -1,0 +1,24 @@
+项目说明：Struts2和Hibernate整合，完成用户的登录注册功能
+使用到的类：
+
+视图：
+Login.jsp :   登录视图 
+register.jsp :  注册视图
+success.jsp :    登录成功显示视图
+
+Action:
+loginAction.java :   处理登录业务
+
+registerAction.java :   处理注册业务
+
+loginRegisterInfo.java :  将登录和注册业务功能封装到类LoginRegisterInfo（JavaBean）中
+
+HibernateSessionFactory.java :   加载Hibernate.cfg.xml文件的类
+
+UserInfoPO.java :   PO对象的类
+
+配置文件：
+web.xml :      配置struts框架中的核心控制器组件
+struts.xml :    配置处理业务的Action
+Hibernate.cfg.xml :   使用Hibernate需要通过Hibernate的配置文件加载数据库驱动以及与数据建立连接
+UserInfoPO.hbm.xml :   PO对应的映射文件

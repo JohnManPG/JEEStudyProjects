@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="PO">
+   <class name="Login" table="login" catalog="onetoone">
+   
+ <!-- 采用数据库提供的主键生成机制如DB2 SQL Server MySQL中的主键生成 机制。对DB2,MySQL, MS SQL Server, Sybase和HypersonicSQL的内置标识字段提供支持。 返回的标识符是 long, short 或者int类型的。 -->  
+   <id column="ID" name="id" type="integer">
+        <generator class="foreign">   <!-- 使用另外一个相关联的对象的标识符。通常和<one-to-one>联合起来使用。  -->
+        <param name="property">company</param>
+        </generator>
+   </id>
+    
+    <property name="loginname" column="LOGINNAME" type="string"/>   
+    <property name="loginpwd" column="LOGINPWD" type="string"/>
+   
+     <!-- 映射Company与Login的一对一主键关联 -->
+  <one-to-one name="company"  class="PO.Company" constrained="true"></one-to-one>  
+   </class>
+</hibernate-mapping>

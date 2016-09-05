@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="PO">
+   <class name="Address" table="address">
+   
+ <!-- 采用数据库提供的主键生成机制如DB2 SQL Server MySQL中的主键生成 机制。对DB2,MySQL, MS SQL Server, Sybase和HypersonicSQL的内置标识字段提供支持。 返回的标识符是 long, short 或者int类型的。 -->  
+   <id column="ID" name="id" type="integer">
+        <generator class="identity"/>
+   </id>
+    
+    <property name="province" column="PROVINCE" type="string"/>   
+    <property name="city" column="CITY" type="string"/>
+    <property name="street" column="STREET" type="string"/>
+    <property name="zipcode" column="ZIPCODE" type="string"/>
+     <!-- 映射Client与Address的一对一主键关联 -->
+  <one-to-one name="client"  class="PO.Client" property-ref="address"/>  
+   </class>
+</hibernate-mapping>

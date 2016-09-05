@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>    
+<package name="intercept" extends="struts-default">
+   <!-- Struts规定，对拦截器的配置应放到Action的配置之前。拦截器的配置总是放到前面，Action的配置放到后面 -->
+   <interceptors>
+          <!-- 文字过滤拦截器配置，replace是拦截器的名字 -->
+          <interceptor name="replace" class="interceptor.MyInterceptor"/>
+   </interceptors>
+   <!-- 文字过滤Action的配置 -->
+   <action name="public" class="interceptor.PublicAction">
+   <result name="success">/success.jsp</result>
+   <result name="login">/success.jsp</result>
+   <!-- Struts系统默认拦截器 -->
+   <interceptor-ref name="defaultStack"/>
+   <!-- 使用自定义拦截器 -->
+   <interceptor-ref name="replace"/>
+   </action>
+</package>
+</struts>

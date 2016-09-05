@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="中国人" class="iocexample.Chinese">   <!-- 通过这个框架获得Bean的实例对象 -->
+    
+  </bean>                                      <!-- Spring框架的实现即：IOC即是工厂 -->
+
+  <bean id="美国人" class="iocexample.American">   <!-- 这是在让我们理解IOC -->
+    
+  </bean>
+
+    <!-- 这两个对象并不依赖双方，所以不需要配置属性 -->
+
+</beans>

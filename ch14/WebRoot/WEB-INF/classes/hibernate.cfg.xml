@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!-- Hibernate配置文件的根元素，其他元素在其中使用 -->
+<hibernate-configuration>
+<!-- 指定初始化Hibernate参数的元素，其中，指定Hibernate初始化参数，表名以下的配置针对session-factory。sessionfatory是Hibernate中的一个接口这个接口主要负责保存Hibernate的配置信息以及对sessiond的操作 -->
+<session-factory>
+        <!-- 下面是所需建厂的基本资料，需要根据这些资料建一个session工厂 -->
+	<!-- Database connection settings -->
+	<property name="connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property><!--name是属性，属性值就是 里面的值 -->
+	<property name="connection.url">
+		jdbc:mysql://localhost:3306/test
+	</property>
+	<property name="connection.username">root</property>
+	<property name="connection.password">mysql</property>
+
+	<!-- JDBC connection pool (use the built-in) -->
+
+	<!-- SQL dialect  指定数据库的方言，每种数据库都有对应的方言 -->
+	<property name="dialect">
+		org.hibernate.dialect.MySQLInnoDBDialect
+	</property>
+
+	<mapping resource="PO/UserInfoPO.hbm.xml" />    <!-- 这就像包括文件一样，指明hibernate的映射文件，使用中直接加载hibernate.cfg.xml文件，就能加载映射文件 -->
+               
+</session-factory>
+<!-- 这个配置文件是没有什么难得，理解就行，不需要记住 -->
+</hibernate-configuration
+>

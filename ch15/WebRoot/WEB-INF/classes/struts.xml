@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 有这样一个文件后，正确的做法是写一个Action配置一个Action，如果开发前自己不知道的话-->
+<struts>  
+    <package name="default"  extends="struts-default">
+    <!-- 处理查看信息的业务Action -->
+     
+     <action name="lookMessageAction" class="studentAction.LookMessageAction">      
+            <result name="success">/lookMessage.jsp</result>
+            <result name="input">/index.jsp</result> 
+     </action>
+     <!-- 处理添加学生信息的业务Action -->
+     <action name="addMessageAction" class="studentAction.AddMessageAction">
+            <result name="success" type="chain">lookMessageAction</result>
+            <result name="input">/addMessage.jsp</result>           
+     </action>
+     <!-- 处理查找数据的业务Action -->
+     <action name="findMessageAction" class="studentAction.FindMessageAction">
+            <result name="success">/updateMessage.jsp</result>
+            <result name="input">/findMessage.jsp</result>
+     </action>
+     <!-- 处理更新数据的业务Action -->
+     <action name="updateMessageAction" class="studentAction.UpdateMessageAction">
+            <result name="success" type="chain">lookMessageAction</result>      <!-- 也可以直接跳转到Action中，然后再有一个Action转到一个JSP页面    -->
+            <result name="input">/updateMessage.jsp</result>
+     </action>
+     <!-- 处理删除的业务Action -->
+     <action name="deleteMessageAction" class="studentAction.DeleteMessageAction">
+            <result name="success" type="chain">lookMessageAction</result>
+            <result name="input">/deleteMessage.jsp</result>
+     </action>
+    
+    </package>
+
+</struts>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name></display-name>
+  <servlet>
+    <description>我的第一个servlet</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>FirstServlet</servlet-name>
+    <servlet-class>servlet.FirstServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>用来接收三个参数</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ThreeParams</servlet-name>
+    <servlet-class>servlet.ThreeParams</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Verify</servlet-name>
+    <servlet-class>servlet.Verify</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ShowMessage</servlet-name>
+    <servlet-class>servlet.ShowMessage</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AddMessageServlet</servlet-name>
+    <servlet-class>servlet.AddMessageServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>FirstServlet</servlet-name>
+    <url-pattern>/FirstServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ThreeParams</servlet-name>
+    <url-pattern>/ThreeParams</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Verify</servlet-name>
+    <url-pattern>/Verify</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowMessage</servlet-name>
+    <url-pattern>/ShowMessage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddMessageServlet</servlet-name>
+    <url-pattern>/AddMessageServlet</url-pattern>
+  </servlet-mapping>	
+  
+  
+  
+  
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

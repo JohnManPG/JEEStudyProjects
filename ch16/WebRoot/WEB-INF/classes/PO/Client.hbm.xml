@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="PO">
+   <class name="Client" table="client" catalog="onetoone">
+   
+ <!-- 采用数据库提供的主键生成机制如DB2 SQL Server MySQL中的主键生成 机制。对DB2,MySQL, MS SQL Server, Sybase和HypersonicSQL的内置标识字段提供支持。 返回的标识符是 long, short 或者int类型的。 -->  
+   <id column="ID" name="id" type="integer">
+        <generator class="identity"></generator>
+   </id>
+    
+    <property name="clientname" column="CLIENTNAME" type="string"/>   
+    <property name="phone" column="PHONE" type="string"/>
+    <property name="email" column="EMAIL" type="string"/>
+    
+     <!-- 映射Company与Login的一对一主键关联 -->
+  <many-to-one name="address" class="PO.Address" column="address" cascade="all" lazy="false" unique="true"></many-to-one>  
+   </class>
+</hibernate-mapping>

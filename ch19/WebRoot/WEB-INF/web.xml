@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_9" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+          <!-- 监听器是Spring需要配置的 -->
+       <!-- 在web.xml中配置context-param，即配置applicationContext.xml，是通过applicationContext.xml配置Spring3,xml中元素定义了要加载的Spring3配置文件 -->
+       <context-param>     <!-- 本地加载 -->
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/applicationContext.xml</param-value>
+       </context-param>
+       <!-- ContextLoaderListener的作用就是启动Web容器时自动装配ApplicationContext.xml的配置信息，因为它实现了ServletContextListener接口，在web.xml配置该监听器，启动容器时，就会默认执行它实现的方法 -->
+       <listener>     <!-- 初始化初始化初始的是数据，模型就是数据，所以配置监听器是为了初始web apps，需要配置Spring中的 ContextLoaderListener-->
+            <listener-class>   <!-- 使容器中存放都是Bean的实例 -->
+                org.springframework.web.context.ContextLoaderListener 
+            </listener-class>
+       </listener>
+          <!-- 过滤器是Struts框架需要配置的 -->
+       <filter>
+             <filter-name>struts2</filter-name>
+             <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+       </filter>
+       
+       <filter-mapping>
+             <filter-name>struts2</filter-name>
+             <url-pattern>/*</url-pattern>
+       </filter-mapping>
+           <!-- 会话延时 -->
+       <session-config>
+             <session-timeout>
+                 30
+             </session-timeout>
+       </session-config>
+       
+       
+       <welcome-file-list>
+             <welcome-file>index.jsp</welcome-file>
+       </welcome-file-list>
+  <!-- 所有的框架都是在Java的基础上进行开发的，所以都会实现Java的接口，这个毫无疑问，所以总结下来，Java要学好，必须要学好 -->  
+  <!-- web容器启动时先加载web.xml文件 -->     
+  <!-- 配置Spring:1.context-param：初始化Spring   2.listener监听器:初始化Web应用程序-->
+</web-app>

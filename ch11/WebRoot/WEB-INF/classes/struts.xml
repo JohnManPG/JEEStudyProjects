@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>    
+
+   
+     <!-- struts2专门有个拦截器就是管理加载国际化资源文件的，是I18N拦截器，所以学习struts框架不仅要学会使用他提供的API，还要知道他提供的每一种拦截器的作用 -->
+     <!-- 拦截器一般在执行Action之前或者之后，所以每一个拦截器都需要在struts.xml中配置，web.xml配置的是核心控制器，是处理用户请求的 -->
+    <constant name="struts.custom.i18n.resources"  value="globalMessages" />
+    <constant name="struts.i18n.encoding" value="UTF-8" />  
+    
+    
+    
+    <package name="i18n" namespace="/" extends="struts-default">
+     <action name="checkLogin" class="loginAction.LoginAction">  
+            <result name="error">/login.jsp</result>    
+            <result name="success">/loginSuccess.jsp</result>
+     </action>
+     
+     
+     <action name="upLoad" class="fileUpDown.UploadAction">
+     <!-- fileUpload拦截器配置 -->
+     <interceptor-ref name="fileUpload">
+     <!-- 设置上传文件的最大字节数 -->
+     <param name="maximumSize">10000000</param>   
+     <!-- 设置上传文件的类型 -->
+     <param name="allowTypes">
+     gif,image/png,image/jpeg
+     </param>
+     </interceptor-ref>
+     <interceptor-ref name="defaultStack"/>
+     <!-- 设置上传文件保存的文件夹 -->
+     <param name="savePath">./save</param>    <!-- 通过param配置action的参数，包括文件上传的路径，这是一个虚拟路径 -->
+      <result name="input">/fileUpDown/fileUp.jsp</result> 
+      <result name="success">/fileUpDown/fileUpSuccess.jsp</result>
+     </action>
+     
+     <!-- 说到根本，servlet是根本，jsp+Java是servlet，所以配置struts.xml就像配置以前的web.xml一样，配置的路径不对，那么就会访问不到该资源，而是这个站点下的所有资源 -->
+     <!--在strutsl里需要配置action，下载拦截器等，struts里的内容不能配错，否则找不到该站点下的任何文件 -->
+     <action name="fileDownload" class="fileUpDown.FileDownload">
+     <!-- 设置文件所在的位置，需要在项目中添加一个名为download的文件夹 -->
+     <param name="path">/download/1.jpg</param><!-- 只要你知道了，熟练了，配置这个根本就不麻烦 -->
+     <!-- 设置Stream属性 -->
+     <result name="success" type="stream">
+     <!-- 设置stream对应的参数 -->           
+     <param name="contentType">image/jpg</param>
+     <param name="inputName">inputStream</param>
+     <param name="contentDisposition">attachment;filename="hlm.jpg"</param>
+     <param name="buffersize">40960</param>
+     </result>
+     </action>
+    </package>
+ 
+</struts>

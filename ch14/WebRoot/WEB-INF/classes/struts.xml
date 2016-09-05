@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 这里面配置两个Action,一个处理登录业务，一个处理注册业务 -->
+<struts>  
+    <package name="default" namespace="/" extends="struts-default">
+     <action name="login" class="loginRegisterAction.LoginAction">  
+            <result name="error">/login.jsp</result>     
+            <result name="success">/success.jsp</result>
+            <result name="input">/login.jsp</result> 
+     </action>
+     
+     <action name="register" class="loginRegisterAction.RegisterAction">
+            <result name="success">/login.jsp</result>
+            <result name="input">/register.jsp</result>
+            <result name="error">/register.jsp</result>
+     </action>
+    </package>
+
+</struts>

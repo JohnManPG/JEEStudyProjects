@@ -1,0 +1,24 @@
+<!DOCTYPE html>    <!-- 这是HTML5的头部 -->
+<html>
+  <head>
+    <title>注册页面</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!-- <link rel="stylesheet" type="text/css" href="./styles.css"> --><!-- 链接外部的CSS -->
+
+  </head>
+  
+  <body>
+     <p>用户信息注册</p>      <!-- 先要部署项目才能在服务器中访问到 -->
+     <hr>
+     <form action="register.jsp">   <!--  post和get的区别:1.使用get时，会在URL上显示你填的表单信息，使用POST就不会 -->
+            用户名： <input name="username" type="text"/>     <!-- form表单要填method属性和action属性 ,如果不填方法的话，默认是get-->
+             密码：<input name="password" type="password"/> 
+             年龄：<input name="age" type="text"/> 
+             <input type="submit" value="提交"/>   
+     </form>       
+  </body>
+</html>

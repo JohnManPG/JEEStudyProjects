@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        <!-- 映射文件配置的根元素 -->
+<!-- 配置PO对象与数据库中表的对应关系使用class元素，name配置PO对象对应的类，table配置该PO对象在数据库中对应的表名，catalog配置表对应的数据库名 -->
+<hibernate-mapping><!-- class属性将PO对象与相对应的表建立连接，然后其它的配置在这个连接的基础之上 -->
+   <class name="PO.UserInfoPO" table="info" catalog="test">
+   <!-- id元素配置PO对象与数据库中表对应的id字段，name配置PO对象对应的属性，type指定PO对象属性的类型，column元素配置表中和PO对象属性对应的字段，把PO对象中的指定属性存在表中指定字段中，generator元素将主键自动加入序列 -->
+   <id name="id" type="int">
+   <column name="id"/>
+   <generator class="assigned"/>      <!-- 标识符生成器 -->
+   </id>
+   
+   
+   <!-- property元素配置PO对象中的某个属性对应表中的某个字段名，即实现一一对应的映射关系。name指定PO对象的属性，type指定属性的类型 -->
+   <property name="userName" type="string">
+   <!-- column元素配置对应的表中字段，name指定对用表的字段，length指定字段长度，not-null设置字段是否为空 -->
+   <column name="userName" length="30" not-null="true"/>
+   </property>
+   
+   <property name="password" type="string">
+   <column name="password" length="30" not-null="true"/>
+   </property>
+   </class>
+</hibernate-mapping>

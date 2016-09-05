@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <!-- 配置数据源 -->
+  <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test"></property>
+    <property name="user" value="root"></property>
+    <property name="password" value="mysql"></property>
+    <!-- 指定数据库连接池的最大连接数 -->
+    <property name="maxPoolSize" value="40"></property>
+    <!-- 指定数据库连接池的最小连接数 -->
+    <property name="minPoolSize" value="1"></property>
+    <!-- 指定数据库连接池的初始化连接数 -->
+    <property name="initialPoolSize" value="1"></property>
+    <!-- 指定链接数据库连接池的链接的最大空闲时间 -->
+    <property name="maxIdleTime" value="20"></property>
+  </bean>
+     <!-- 定义了Hibernate的SessionFactory -->
+  <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+      <property name="dataSource">
+      <ref bean="dataSource"/>
+      </property>
+      <property name="mappingResource">
+      <list>
+      <value>com/entity/User.hbm.xml</value>
+      </list>
+      </property>
+      <property name="hibernateProperties">
+      <props>
+      <prop key="hibernate.dialect">
+      org.hibernate.dialect.MySQLDialect
+      </prop>      
+      </props>
+      </property>
+  </bean>
+  
+  <!-- HibernateTemplate类是简化Hibernate数据访问代码的辅助类，可以获取一个Session对象 -->
+  <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+  <property name="sessionFactory">
+        <ref bean="sessionFactory"/>
+  </property>
+  <property name="allowCreate">
+  <value>true</value>
+  </property> 
+  </bean>
+  <!-- 依赖注入 -->
+  <bean id="userDao" class="com.dao.impl.UserDaoImpl">
+    <!-- 注入持久化操作所需的SessionFactory -->
+    <property name="sessionFactory">
+        <ref bean="sessionFactory"/>
+    </property>
+  </bean>
+</beans>

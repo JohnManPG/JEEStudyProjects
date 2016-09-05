@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+   <class name="PO.Stuinfo" table="stuinfo" catalog="stu">
+   
+   
+   <id name="id" type="string">
+   <column name="id" length="20"/>
+   <generator class="assigned"/>     
+   </id>
+    
+    <property name="name" type="string">  
+    <column name="name" length="20" not-null="true"/>
+    </property>
+   
+    <property name="sex" type="string">
+    <column name="sex" length="5" not-null="true"/>
+    </property>
+   
+    <property name="age" type="int">
+    <column name="age"  not-null="true"/>
+    </property>
+   
+   
+    <property name="weight" type="float">
+    <column name="weight" precision="10" scale="0" not-null="true"/>
+    </property>
+   
+   </class>
+</hibernate-mapping>

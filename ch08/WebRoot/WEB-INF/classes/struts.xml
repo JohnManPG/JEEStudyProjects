@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>     <!-- struts是根路径 -->
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+<!-- - 
+    <package name="default" namespace="/" extends="struts-default">
+
+        <default-action-ref name="index" />
+
+        <global-results>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+        <action name="index">
+            <result type="redirectAction">
+                <param name="actionName">HelloWorld</param>
+                <param name="namespace">/example</param>
+            </result>
+        </action>
+    </package>
+
+ -->     
+<!-- 请求首先会在指定名称空间找对应的Action，如果找不到再到默认的名称空间找Action，拦截器配置 -->
+    <!-- Add packages here，对于struts.xml来说，package就像是一个类，有继承、抽象、名称等属性，struts-default是struts框架的默认包 -->
+    <package name="login" namespace="/" extends="struts-default">
+     <action name="login">  <!-- -这个名字只要和表单提交的名字是一样的就行，没有限制 -->
+            <result name="error">/login.jsp</result>     <!-- 有逻辑视图到物理视图的信息流的转变也是在struts.xml文件中 -->
+            <result name="success">/success.jsp</result>
+     </action>
+    </package>
+
+</struts>

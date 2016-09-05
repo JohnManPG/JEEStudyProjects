@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+  <!-- 配置Bean,注入Chinese类对象 -->
+  <!-- <bean id="中国人" class="iocexample1.Chinese">   -->
+  <!-- 这样的话，被注入的类中必须要有将要注入对象的这个属性，提供set()方法，为属性赋值 -->
+    <!-- <property>元素用来指定需要容器注入的属性，name指定属性值为language;ref指定需要向languages属性注入的id.即注入的对象“英语”，该对象由English类生成 -->
+    <!-- <property name="language" ref="英语"></property>    
+  </bean>     设置注入使用property配置标签-->                                   
+        <!-- IOC负责创建实例对象，在注入对象时，被注入的对象需要提供一个注入的方法，那么set方法是两种中的一种，类似为JavaBean中的属性赋值 -->
+  <!-- <bean id="英语" class="iocexample1.English"> </bean>  --> <!--  通过Spring的内部机制，加载了该文件就相当于创建了Bean的实例对象 -->
+
+    <!-- 这两个对象并不依赖双方，所以不需要配置属性 -->
+    
+    
+    <bean id="中国人" class="iocexample1.Chinese">
+       <constructor-arg ref="英语"></constructor-arg>    <!-- 构造注入使用constructor-arg配置标签，构造注入在创建Bean实例时，已经已经完成了对象的而注入  -->
+    </bean>                                             <!-- 设置注入是先创建Bean实例，在调用注入对象的set方法，完成对象的注入 -->
+    <bean id="英语" class="iocexample1.English"></bean>  <!-- 所以两个人注入的方法，注入的对象时间不同 -->
+
+</beans>
